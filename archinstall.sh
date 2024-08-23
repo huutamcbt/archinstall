@@ -231,7 +231,7 @@ else
   sudo chgrp -R wheel /data
   sudo chmod -R g+rwx /data
 
-  echo "file:///data Data" >>/home/tam/.config/gtk-3.0/bookmarks
+  #echo "file:///data Data" >>/home/tam/.config/gtk-3.0/bookmarks
 
   echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' >>/etc/udev/rules.d/backlight.rules
 
@@ -280,6 +280,7 @@ else
   cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
+  exit
   exit
 
   umount -a
