@@ -119,6 +119,12 @@ mount $BOOT /mnt/boot
 mount $HOME /mnt/home
 mount $DATA /mnt/data
 
+clear
+echo "This is a partition table"
+print_lsblk
+echo "Press Enter to continue"
+read
+
 # Initialation and install essential packages
 
 pacstrap -K /mnt <<EOF
