@@ -14,6 +14,13 @@ function print_drive() {
   echo $'\n---------------------------------------------------------'
 }
 
+function print_lsblk() {
+  echo "---------------------------------------------------------"
+  echo $'\n           THIS IS THE DRIVE DETAIL \n'
+  lsblk $DRIVE
+  echo $'\n---------------------------------------------------------'
+}
+
 function print_esp() {
   echo "EFI: partition: $EFI"
 }
@@ -38,7 +45,7 @@ function print_swap() {
   echo "SWAP AREA: $SWAP"
 }
 
-print_drive
+print_lsblk
 
 while [[ ! $EFI =~ $DRIVE ]]; do
   echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
