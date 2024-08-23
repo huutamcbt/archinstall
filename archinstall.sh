@@ -153,7 +153,7 @@ if [[ $STEP = 1 ]]; then
   echo "Run arch-chroot"
   echo "Press Enter to continue ..."
   read
-# arch-chroot /mnt
+  arch-chroot /mnt
 
 else
 
