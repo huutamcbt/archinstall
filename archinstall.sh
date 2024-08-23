@@ -280,4 +280,8 @@ else
   cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
+  exit
+
+  umount -a
+
 fi
