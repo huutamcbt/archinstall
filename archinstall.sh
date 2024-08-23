@@ -196,7 +196,7 @@ else
 
   mkinitcpio -p linux
 
-  mkinitcpio -p linux-lts
+  # mkinitcpio -p linux-lts
 
   # Install GRUB and config it
 
@@ -235,15 +235,16 @@ else
 
   echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' >>/etc/udev/rules.d/backlight.rules
 
+  su $USER
   # Install yay
-  pacman -S --needed git base-devel
+  sudo pacman -S --needed git base-devel
   cd /tmp
   git clone https://aur.archlinux.org/yay.git
   cd yay
   makepkg -si
 
   # Install firefox-developer-edition
-  pacman -S firefox-developer-edition
+  sudo pacman -S firefox-developer-edition
   yay -S google-chrome
 
   # Install vscode
@@ -256,21 +257,21 @@ else
   pacman -S libreoffice-fresh
 
   # Install gnome extension
-  pacman -S gnome-extra
-  pacman -Sy gnome-browser-connector
+  sudo pacman -S gnome-extra
+  sudo pacman -Sy gnome-browser-connector
 
   # Install ulauncher
-  git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
+  git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && sudo makepkg -is
 
   # Install flatpak
-  sudo pacman -S flatpak
+  sudo sudo pacman -S flatpak
 
   flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
   # Install docker
-  pacman -S docker docker-compose docker-buildx
-  systemctl enable docker.service
-  usermod -aG docker tam
+  sudo pacman -S docker docker-compose docker-buildx
+  sudo systemctl enable docker.service
+  sudo usermod -aG docker tam
 
   # Install neovim
   sudo pacman -S --needed base-devel cmake unzip ninja curl
