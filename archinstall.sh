@@ -7,8 +7,6 @@ while [[ ! $(blkid | grep $DRIVE) || ! $(fdisk -l $DRIVE) ]]; do
   read DRIVE
 done
 
-clear
-
 function print_drive() {
   echo "---------------------------------------------------------"
   echo $'\n           THIS IS THE DRIVE DETAIL \n'
@@ -40,40 +38,42 @@ function print_swap() {
   echo "SWAP AREA: $SWAP"
 }
 
-while [[ !($EFI =~ $DRIVE) ]]; do
+print_drive
+
+while [[ ! $EFI =~ $DRIVE ]]; do
   echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
   read EFI
-  echo "This partition is not in the selected drive"
+  #  echo "This partition is not in the selected drive"
 done
 
-while [[ !($BOOT =~ $DRIVE) ]]; do
+while [[ ! $BOOT =~ $DRIVE ]]; do
   echo "Please enter boot partition: (example /dev/sda1 or /dev/nvme0n1p1)"
   read BOOT
-  echo "This partition is not in the selected drive"
+  #  echo "This partition is not in the selected drive"
 done
 
-while [[ !($SWAP =~ $DRIVE) ]]; do
+while [[ ! $SWAP =~ $DRIVE ]]; do
   echo "Please enter swap partition: (example /dev/sda1 or /dev/nvme0n1p1)"
   read SWAP
-  echo "This partition is not in the selected drive"
+  # echo "This partition is not in the selected drive"
 done
 
-while [[ !($ROOT =~ 'lv_root') ]]; do
+while [[ ! $ROOT =~ 'lv_root' ]]; do
   echo "Please enter root partition: (example /dev/sda1 or /dev/nvme0n1p1)"
   read ROOT
-  echo "This partition is not in the selected drive"
+  #echo "This partition is not in the selected drive"
 done
 
-while [[ !($HOME =~ 'lv_home') ]]; do
+while [[ ! $HOME =~ 'lv_home' ]]; do
   echo "Please enter home partition: (example /dev/sda1 or /dev/nvme0n1p1)"
   read HOME
-  echo "This partition is not in the selected drive"
+  #echo "This partition is not in the selected drive"
 done
 
-while [[ !($DATA =~ 'lv_data') ]]; do
+while [[ ! $DATA =~ 'lv_data' ]]; do
   echo "Please enter data partition: (example /dev/sda1 or /dev/nvme0n1p1)"
   read DATA
-  echo "This partition is not in the selected drive"
+  #echo "This partition is not in the selected drive"
 done
 
 # Summary the partition table
@@ -114,8 +114,10 @@ mount $DATA /mnt/data
 
 # Initialation and install essential packages
 
-pacstrap -K /mnt base linux linux-firmware linux-lts linux-headers linux-lts-headers base-devel dosfstools grub efibootmgr \ 
+pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr \ 
 gnome gnome-tweaks lvm2 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch
+
+# linux-lts linux-lts-headers
 
 # Generate the file system UUID file
 echo "Generate the file system UUID file"
@@ -232,6 +234,7 @@ pacman -S libreoffice-fresh
 
 # Install gnome extension
 pacman -S gnome-extra
+pacman -Sy gnome-browser-connector
 
 # Install ulauncher
 git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
