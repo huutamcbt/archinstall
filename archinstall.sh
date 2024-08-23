@@ -128,11 +128,7 @@ read
 
 # Initialation and install essential packages
 
-pacstrap -K /mnt <<EOF
-base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr 
-gnome gnome-tweaks lvm2 mtools nano networkmanager openssh os-prober sudo man 
-intel-ucode bluez bluez-utils sof-firmware git htop neofetch
-EOF
+pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm2 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch
 
 # linux-lts linux-lts-headers
 
