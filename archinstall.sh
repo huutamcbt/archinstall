@@ -118,6 +118,7 @@ mount $EFI /mnt/efi
 mount $BOOT /mnt/boot
 mount $HOME /mnt/home
 mount $DATA /mnt/data
+swapon $SWAP
 
 clear
 echo "This is a partition table"
