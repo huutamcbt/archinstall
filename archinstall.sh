@@ -116,8 +116,7 @@ if [[ $STEP = 1 ]]; then
   mkfs.ext4 $ROOT
   mkfs.ext4 $HOME
 
-  if [[ $FORMAT_DATA = 'y' ]]
-  then
+  if [[ $FORMAT_DATA = 'y' ]]; then
     mkfs.ext4 $DATA
   fi
 
@@ -294,8 +293,7 @@ else
 
   echo "Do you want to reboot now? [y/n]"
   read REBOOT
-  if [[ $REBOOT = 'y']]
-  then 
+  if [[ $REBOOT = 'y' ]]; then
     reboot
   fi
 
