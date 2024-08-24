@@ -241,6 +241,14 @@ elif [[ $STEP = 2 ]]; then
 
   echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' >>/etc/udev/rules.d/backlight.rules
 
+  echo "Do you want reboot now? [y/n]"
+  read REBOOT
+  if [[ $REBOOT = 'y' ]]; then
+    exit
+    umount -a
+    reboot
+  fi
+
 else
   su $USER
   # Install yay
