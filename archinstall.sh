@@ -248,7 +248,7 @@ else
   cd /tmp
   git clone https://aur.archlinux.org/yay.git
   cd yay
-  sudo makepkg -si
+  makepkg -si
 
   # Install firefox-developer-edition
   sudo pacman -S firefox-developer-edition
@@ -268,7 +268,7 @@ else
   sudo pacman -Sy gnome-browser-connector
 
   # Install ulauncher
-  git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && sudo makepkg -is
+  git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
 
   # Install flatpak
   sudo sudo pacman -S flatpak
