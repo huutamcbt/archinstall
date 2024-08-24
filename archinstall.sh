@@ -106,13 +106,20 @@ if [[ $STEP = 1 ]]; then
   echo "Press Enter to continue..."
   read
 
+  echo "Do you want to format /data partition? [y/n]"
+  read FORMAT_DATA
+
   # Format partition for installation
   mkfs.fat -F32 $EFI
   mkfs.ext4 $BOOT
   mkswap $SWAP
   mkfs.ext4 $ROOT
   mkfs.ext4 $HOME
-  mkfs.ext4 $DATA
+
+  if [[ $FORMAT_DATA = 'y' ]]
+  then
+    mkfs.ext4 $DATA
+  fi
 
   # Mount the partition into /mnt directory
   mount $ROOT /mnt
@@ -241,7 +248,7 @@ else
   cd /tmp
   git clone https://aur.archlinux.org/yay.git
   cd yay
-  makepkg -si
+  sudo makepkg -si
 
   # Install firefox-developer-edition
   sudo pacman -S firefox-developer-edition
@@ -254,7 +261,7 @@ else
   yay -S ttf-ms-win11-auto ttf-ms-win10-auto
 
   # Install office
-  pacman -S libreoffice-fresh
+  sudo pacman -S libreoffice-fresh
 
   # Install gnome extension
   sudo pacman -S gnome-extra
@@ -266,7 +273,7 @@ else
   # Install flatpak
   sudo sudo pacman -S flatpak
 
-  flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  sudo flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
   # Install docker
   sudo pacman -S docker docker-compose docker-buildx
@@ -284,5 +291,12 @@ else
   exit
 
   umount -a
+
+  echo "Do you want to reboot now? [y/n]"
+  read REBOOT
+  if [[ $REBOOT = 'y']]
+  then 
+    reboot
+  fi
 
 fi
