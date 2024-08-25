@@ -141,7 +141,7 @@ if [[ $STEP = 1 ]]; then
 
   # Initialation and install essential packages
 
-  pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm2 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch
+  pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm2 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch firefox-developer-edition libreoffice-fresh gnome-extra gnome-browser-connector
 
   # linux-lts linux-lts-headers
 
@@ -250,7 +250,6 @@ elif [[ $STEP = 2 ]]; then
   fi
 
 else
-  su $USER
   # Install yay
   sudo pacman -S --needed git base-devel
   cd /tmp
@@ -258,8 +257,6 @@ else
   cd yay
   makepkg -si
 
-  # Install firefox-developer-edition
-  sudo pacman -S firefox-developer-edition
   yay -S google-chrome
 
   # Install vscode
@@ -268,25 +265,21 @@ else
   # Install microsoft fonts
   yay -S ttf-ms-win11-auto ttf-ms-win10-auto
 
-  # Install office
-  sudo pacman -S libreoffice-fresh
-
-  # Install gnome extension
-  sudo pacman -S gnome-extra
-  sudo pacman -Sy gnome-browser-connector
+  # Install flat-remix theme
+  yay -S flat-remix
 
   # Install ulauncher
   git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
 
   # Install flatpak
-  sudo sudo pacman -S flatpak
+  sudo pacman -S flatpak
 
-  sudo flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
   # Install docker
   sudo pacman -S docker docker-compose docker-buildx
   sudo systemctl enable docker.service
-  sudo usermod -aG docker tam
+  sudo usermod -aG docker $(whoami)
 
   # Install neovim
   sudo pacman -S --needed base-devel cmake unzip ninja curl
@@ -295,15 +288,9 @@ else
   cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
-  exit
-  exit
+  # Install lazyvim
+  git clone https://github.com/LazyVim/starter ~/.config/nvim
 
-  umount -a
-
-  echo "Do you want to reboot now? [y/n]"
-  read REBOOT
-  if [[ $REBOOT = 'y' ]]; then
-    reboot
-  fi
+  rm -rf ~/.config/nvim/.git
 
 fi
