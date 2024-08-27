@@ -311,4 +311,6 @@ else
 
   yay -S virtualbox-ext-oracle
 
+  sudo usermod -aG vboxusers $(whoami)
+
 fi
