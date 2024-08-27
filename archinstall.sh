@@ -141,7 +141,7 @@ if [[ $STEP = 1 ]]; then
 
   # Initialation and install essential packages
 
-  pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm2 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch firefox-developer-edition libreoffice-fresh gnome-extra gnome-browser-connector timeshift ranger fzf networkmanager-openvpn network-manager-applet
+  pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm3 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch firefox-developer-edition libreoffice-fresh gnome-extra gnome-browser-connector timeshift ranger fzf networkmanager-openvpn network-manager-applet subversion xclip
 
   # linux-lts linux-lts-headers
 
@@ -302,5 +302,8 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   echo "file:///data Data" >>/home/tam/.config/gtk-3.0/bookmarks
+
+  # Install Node Version Manager
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
 fi
