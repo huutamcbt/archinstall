@@ -306,4 +306,9 @@ else
   # Install Node Version Manager
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
+  # Install VirtualBox
+  sudo pacman -S virtualbox virtualbox-guest-iso
+
+  yay -S virtualbox-ext-oracle
+
 fi
