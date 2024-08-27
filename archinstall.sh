@@ -260,7 +260,20 @@ else
   makepkg -si
 
   # Install fonts
-  sudo pacman -S nerd-fonts
+  sudo pacman -S --needed nerd-fonts
+  sudo pacman -S --needed noto-fonts ttf-roboto adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts
+  sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji
+  sudo pacman -S --needed ttf-ubuntu-font-family
+  yay -S ttf-google-fonts-git
+  sudo pacman -S --needed gnu-free-fonts gsfonts tex-gyre-fonts
+  sudo pacman -S --needed ttf-dejavu
+  sudo pacman -S --needed ttf-droid ttf-opensans
+  sudo pacman -S --needed ttf-liberation ttf-croscore
+  # libreoffice fonts
+  sudo pacman -S --needed ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
+  yay -S ttf-gentium-basic
+  yay -S ttf-google-fonts-git
+  sudo pacman -S --needed xorg-fonts-encodings xorg-fonts-misc xorg-fonts-type1 xorg-font-util
 
   yay -S apple-fonts
 
