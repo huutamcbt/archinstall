@@ -250,13 +250,21 @@ elif [[ $STEP = 2 ]]; then
   fi
 
 else
+  # Move to /tmp directory
+  cd /tmp
+
   # Install yay
   sudo pacman -S --needed git base-devel
-  cd /tmp
   git clone https://aur.archlinux.org/yay.git
   cd yay
   makepkg -si
 
+  # Install fonts
+  sudo pacman -S nerd-fonts
+
+  yay -S apple-fonts
+
+  # Install web browser
   yay -S google-chrome
 
   # Install vscode
@@ -312,5 +320,7 @@ else
   yay -S virtualbox-ext-oracle
 
   sudo usermod -aG vboxusers $(whoami)
+
+  # Install GNOME EXTENSIONS
 
 fi
