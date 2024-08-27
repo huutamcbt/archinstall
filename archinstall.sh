@@ -141,7 +141,7 @@ if [[ $STEP = 1 ]]; then
 
   # Initialation and install essential packages
 
-  pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm3 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch firefox-developer-edition libreoffice-fresh gnome-extra gnome-browser-connector timeshift ranger fzf networkmanager-openvpn network-manager-applet subversion xclip
+  pacstrap -K /mnt base linux linux-firmware linux-headers base-devel dosfstools grub efibootmgr gnome gnome-tweaks lvm3 mtools nano networkmanager openssh os-prober sudo man intel-ucode bluez bluez-utils sof-firmware git htop neofetch firefox-developer-edition libreoffice-fresh gnome-extra gnome-browser-connector timeshift ranger fzf networkmanager-openvpn network-manager-applet subversion xclip terminus-font
 
   # linux-lts linux-lts-headers
 
