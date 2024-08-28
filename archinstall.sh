@@ -348,6 +348,9 @@ else
 
     sudo usermod -aG vboxusers $(whoami)
 
+    # Install ibus-bamboo
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo/master/archlinux/install.sh)"
+
   # Install GNOME EXTENSIONS
   elif [[ $CHOICE = 2 ]]; then
     # Install zsh
@@ -384,5 +387,10 @@ else
     nano ~/.zshrc
 
   fi
+
+  # After install above essential packages. You have to install Lavanda-Sea and Lavanda-Sea-Light theme
+  # Config git ssh
+  # Install Arduino IDE
+  # Install Gnome Extensions
 
 fi
