@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+clear
+
+echo "(1) Live Arch Linux Kernel"
+echo "(2) Chroot mode"
+echo "(3) GUI Mode (After install basic arch linux"
+
 STEP=1
 
 echo "Enter your step: "
@@ -250,90 +256,133 @@ elif [[ $STEP = 2 ]]; then
   fi
 
 else
+  clear
+
+  echo "You must copy this installation file into ~/ directory before run it"
+  if [[ $(whoami) = 'root' ]]; then
+    RED='\033[0;31m'
+    echo -e "${RED}You can't run this section as root!"
+    exit
+  fi
+
+  echo "(1) Install normal packages"
+  echo "(2) Install zsh"
+  echo "(3) Install oh-my-zsh"
+  echo "Enter your choice"
+  read CHOICE
   # Move to /tmp directory
   cd /tmp
 
-  # Install yay
-  sudo pacman -S --needed git base-devel
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si
+  if [[ $CHOICE = 1 ]]; then
+    # Install yay
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
 
-  # Install fonts
-  sudo pacman -S --needed nerd-fonts
-  sudo pacman -S --needed noto-fonts ttf-roboto adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts
-  sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji
-  sudo pacman -S --needed ttf-ubuntu-font-family
-  yay -S ttf-google-fonts-git
-  sudo pacman -S --needed gnu-free-fonts gsfonts tex-gyre-fonts
-  sudo pacman -S --needed ttf-dejavu
-  sudo pacman -S --needed ttf-droid ttf-opensans
-  sudo pacman -S --needed ttf-liberation ttf-croscore
-  # libreoffice fonts
-  sudo pacman -S --needed ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
-  yay -S ttf-gentium-basic
-  yay -S ttf-google-fonts-git
-  sudo pacman -S --needed xorg-fonts-encodings xorg-fonts-misc xorg-fonts-type1 xorg-font-util
+    # Install fonts
+    sudo pacman -S --needed nerd-fonts
+    sudo pacman -S --needed noto-fonts ttf-roboto adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts
+    sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji
+    sudo pacman -S --needed ttf-ubuntu-font-family
+    yay -S ttf-google-fonts-git
+    sudo pacman -S --needed gnu-free-fonts gsfonts tex-gyre-fonts
+    sudo pacman -S --needed ttf-dejavu
+    sudo pacman -S --needed ttf-droid ttf-opensans
+    sudo pacman -S --needed ttf-liberation ttf-croscore
+    # libreoffice fonts
+    sudo pacman -S --needed ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
+    yay -S ttf-gentium-basic
+    yay -S ttf-google-fonts-git
+    sudo pacman -S --needed xorg-fonts-encodings xorg-fonts-misc xorg-fonts-type1 xorg-font-util
 
-  yay -S apple-fonts
+    yay -S apple-fonts
 
-  # Install web browser
-  yay -S google-chrome
+    # Install web browser
+    yay -S google-chrome
 
-  # Install vscode
-  yay -S visual-studio-code-bin
+    # Install vscode
+    yay -S visual-studio-code-bin
 
-  # Install microsoft fonts
-  yay -S ttf-ms-win11-auto ttf-ms-win10-auto
+    # Install microsoft fonts
+    yay -S ttf-ms-win11-auto ttf-ms-win10-auto
 
-  # Install flat-remix theme
-  yay -S flat-remix
+    # Install flat-remix theme
+    yay -S flat-remix
 
-  # Install ulauncher
-  git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
+    # Install ulauncher
+    git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
 
-  # Install flatpak
-  sudo pacman -S flatpak
+    # Install flatpak
+    sudo pacman -S flatpak
 
-  flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-  # Install docker
-  sudo pacman -S docker docker-compose docker-buildx
-  sudo systemctl enable docker.service
-  sudo usermod -aG docker $(whoami)
+    # Install docker
+    sudo pacman -S docker docker-compose docker-buildx
+    sudo systemctl enable docker.service
+    sudo usermod -aG docker $(whoami)
 
-  # Install neovim
-  sudo pacman -S --needed base-devel cmake unzip ninja curl
-  cd /tmp
-  git clone https://github.com/neovim/neovim
-  cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
-  sudo make install
+    # Install neovim
+    sudo pacman -S --needed base-devel cmake unzip ninja curl
+    cd /tmp
+    git clone https://github.com/neovim/neovim
+    cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
 
-  # Install LazyVim
-  git clone https://github.com/LazyVim/starter ~/.config/nvim
+    # Install LazyVim
+    git clone https://github.com/LazyVim/starter ~/.config/nvim
 
-  rm -rf ~/.config/nvim/.git
+    rm -rf ~/.config/nvim/.git
 
-  # Install zsh
-  sudo pacman -S zsh
-  zsh --version
-  chsh -s $(which zsh)
+    # Add /data partition into File Manager (nautilus) category
+    echo "file:///data Data" >>/home/tam/.config/gtk-3.0/bookmarks
 
-  # Install oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # Install Node Version Manager
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
-  echo "file:///data Data" >>/home/tam/.config/gtk-3.0/bookmarks
+    # Install VirtualBox
+    sudo pacman -S virtualbox virtualbox-guest-iso
 
-  # Install Node Version Manager
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+    yay -S virtualbox-ext-oracle
 
-  # Install VirtualBox
-  sudo pacman -S virtualbox virtualbox-guest-iso
-
-  yay -S virtualbox-ext-oracle
-
-  sudo usermod -aG vboxusers $(whoami)
+    sudo usermod -aG vboxusers $(whoami)
 
   # Install GNOME EXTENSIONS
+  elif [[ $CHOICE = 2 ]]; then
+    # Install zsh
+    sudo pacman -S zsh
+    zsh --version
+    chsh -s $(which zsh)
+  else
+    # Install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # Install zsh plugins
+    # Install fzf plugin
+    sudo pacman -S --needed fzf
+
+    # Install zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+    # Install zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+    # Install you-should-use
+    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+
+    echo "Add these plugins into ~/.zshrc file command-not-found 
+  fzf zsh-autosuggestions zsh-syntax-highlighting you-should-use"
+    echo "Press Enter to continue..."
+    read
+
+    echo "command-not-found
+  fzf
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  you-should-use" >>~/.zshrc
+    nano ~/.zshrc
+
+  fi
 
 fi
