@@ -300,6 +300,7 @@ else
 
     # Install web browser
     yay -S google-chrome
+    yay -S opera
 
     # Install vscode
     yay -S visual-studio-code-bin
@@ -312,6 +313,9 @@ else
 
     # Install ulauncher
     git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
+
+    # Install obs-studio
+    sudo pacman -S obs-studio
 
     # Install flatpak
     sudo pacman -S flatpak
@@ -390,7 +394,9 @@ else
 
   # After install above essential packages. You have to install Lavanda-Sea and Lavanda-Sea-Light theme
   # Config git ssh
-  # Install Arduino IDE
+  # Install Arduino IDE (make dir contain icons such as ~/Documents/Apps_Icons/arduino_ide.png and a dir contain program bin file ~/Documents/Program_Files/arduino-ide_2.3.2_Linux_64bit.AppImage)
   # Install Gnome Extensions
+  # Change gnome extension properties: burn my windows, dash to dock, ddterm, logo menu, wiggle
+  # Change icons and themes
 
 fi
