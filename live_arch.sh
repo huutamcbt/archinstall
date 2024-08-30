@@ -150,4 +150,3 @@ cp -r ../archinstall/ /mnt
 echo "Run arch-chroot"
 echo "Press Enter to continue ..."
 read
-arch-chroot /mnt

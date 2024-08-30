@@ -13,9 +13,9 @@ read STEP
 
 if [[ $STEP = 1 ]]; then
   source ./live_arch.sh
+  source ./chroot_mode.sh
 
 elif [[ $STEP = 2 ]]; then
-  source ./chroot_mode.sh
 
 elif [[ $STEP = 3 ]]; then
   source ./user_mode.sh
