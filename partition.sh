@@ -2,7 +2,7 @@
 
 echo "Enter your disk: "
 read DISK
-echo $"\nBecause root, home, data reside in LVM so the remaining space after partitioning for root and home partition is data partition\n"
+echo $'\nBecause root, home, data reside in LVM so the remaining space after partitioning for root and home partition is data partition\n'
 echo "How much storage space do you need for your EFI partition?"
 read EFI_SPACE
 echo "How much storage space do you need for your BOOT partition?"
