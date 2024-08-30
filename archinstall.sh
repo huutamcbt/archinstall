@@ -195,7 +195,7 @@ elif [[ $STEP = 2 ]]; then
   echo arch >>/etc/hostname
 
   # Install GPU driver
-  pacman -Syu --needed mesa intel-media-driver dkms nvidia-dkms xorg xorg-apps xorg-server xorg-xinit nvidia-utils nvidia-settings
+  pacman -Syu --needed --noconfirm mesa intel-media-driver dkms nvidia-dkms xorg xorg-apps xorg-server xorg-xinit nvidia-utils nvidia-settings
 
   # Edit mkinitcpio.conf file
   echo "Edit the mkinitcpio.conf file, add some hooks into file such as encrypt, lvm2,..."
@@ -280,42 +280,45 @@ elif [[ $STEP = 3 ]]; then
     cd yay
     makepkg -si
 
+    # Update with yay
+    yay -Syu
+
     # Install fonts
     sudo pacman -S --noconfirm --needed nerd-fonts
     sudo pacman -S --needed --noconfirm noto-fonts ttf-roboto adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts
     sudo pacman -S --needed --noconfirm noto-fonts-cjk noto-fonts-emoji
     sudo pacman -S --needed --noconfirm ttf-ubuntu-font-family
-    yay -S ttf-google-fonts-git
+    yay -S --needed --noconfirm ttf-google-fonts-git
     sudo pacman -S --needed --noconfirm gnu-free-fonts gsfonts tex-gyre-fonts
     sudo pacman -S --needed --noconfirm ttf-dejavu
     sudo pacman -S --needed --noconfirm ttf-droid ttf-opensans
     sudo pacman -S --needed --noconfirm ttf-liberation ttf-croscore
     # libreoffice fonts
     sudo pacman -S --needed --noconfirm ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
-    yay -S ttf-gentium-basic
-    yay -S ttf-google-fonts-git
+    yay -S --needed --noconfirm ttf-gentium-basic
+    yay -S --needed --noconfirm ttf-google-fonts-git
     sudo pacman -S --needed --noconfirm xorg-fonts-encodings xorg-fonts-misc xorg-fonts-type1 xorg-font-util
 
     # Install antivirus
-    sudo pacman -S --noconfirm clamav
+    sudo pacman -S --needed --noconfirm clamav
 
     # Install image editor
-    sudo pacman -S --noconfirm gimp
+    sudo pacman -S --needed --noconfirm gimp
 
-    yay -S apple-fonts
+    yay -S --needed --noconfirm apple-fonts
 
     # Install web browser
-    yay -S google-chrome
-    yay -S opera
+    yay -S --needed --noconfirm google-chrome
+    yay -S --needed --noconfirm opera
 
     # Install vscode
-    yay -S visual-studio-code-bin
+    yay -S --needed --noconfirm visual-studio-code-bin
 
     # Install microsoft fonts
-    yay -S ttf-ms-win11-auto ttf-ms-win10-auto
+    yay -S --needed --noconfirm ttf-ms-win11-auto ttf-ms-win10-auto
 
     # Install flat-remix theme
-    yay -S flat-remix
+    yay -S --needed --noconfirm flat-remix
 
     # Install ulauncher
     git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
@@ -354,7 +357,7 @@ elif [[ $STEP = 3 ]]; then
     # Install VirtualBox
     sudo pacman -S --needed --noconfirm virtualbox virtualbox-guest-iso
 
-    yay -S virtualbox-ext-oracle
+    yay -S --needed --noconfirm virtualbox-ext-oracle
 
     sudo usermod -aG vboxusers $(whoami)
 
