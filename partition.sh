@@ -26,28 +26,28 @@ fdisk $DISK <<EOF
 n
 
 
-"+${EFI_SPACE}M"
+"+${EFI_SPACE}"
 EOF
 
 fdisk $DISK <<EOF
 n
 
 
-"+${BOOT_SPACE}M"
+"+${BOOT_SPACE}"
 EOF
 
 fdisk $DISK <<EOF
 n
 
 
-"+${SWAP_SPACE}G"
+"+${SWAP_SPACE}"
 EOF
 
 fdisk $DISK <<EOF
 n
 
 
-"+${GENERAL_SPACE}G"
+"+${GENERAL_SPACE}"
 EOF
 
 echo "Basic partitioning completed"
