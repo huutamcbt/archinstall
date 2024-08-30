@@ -20,35 +20,39 @@ fdisk -l $DISK
 
 fdisk $DISK <<EOF
 g
-EOF
-
-fdisk $DISK <<EOF
 n
 
 
 "+${EFI_SPACE}"
-EOF
-
-fdisk $DISK <<EOF
 n
 
 
 "+${BOOT_SPACE}"
-EOF
-
-fdisk $DISK <<EOF
 n
 
 
 "+${SWAP_SPACE}"
-EOF
-
-fdisk $DISK <<EOF
 n
 
 
 "+${GENERAL_SPACE}"
+w
 EOF
+
+# fdisk $DISK <<EOF
+#
+# EOF
+#
+# fdisk $DISK <<EOF
+# EOF
+#
+# fdisk $DISK <<EOF
+#
+# EOF
+#
+# fdisk $DISK <<EOF
+#
+# EOF
 
 echo "Basic partitioning completed"
 echo "Press Enter to encryption"
