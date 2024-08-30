@@ -97,7 +97,7 @@ fdisk -l $DISK
 
 echo "Enter your cryptdevice (partition number): "
 read CRYPTDEVICE
-cryptsetup luksFormat $CRYPTDEVICE
+cryptsetup luksFormat ${DISK}p${CRYPTDEVICE}
 cryptsetup open --type luks ${DISK}p${CRYPTDEVICE} lvm
 
 # Create physical volume in encrypt partition
