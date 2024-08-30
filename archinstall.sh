@@ -370,6 +370,11 @@ elif [[ $STEP = 3 ]]; then
     sudo pacman -S --needed --noconfirm zsh
     zsh --version
     chsh -s $(which zsh)
+    echo "Do you want to reboot now? [y/n]"
+    read REBOOT
+    if [[ $REBOOT = 'y' ]]; then
+      reboot
+    fi
   elif [[ $CHOICE = 3 ]]; then
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
