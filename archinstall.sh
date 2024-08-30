@@ -255,7 +255,7 @@ elif [[ $STEP = 2 ]]; then
     reboot
   fi
 
-else
+elif [[ $STEP = 3 ]]; then
   clear
 
   echo "You must copy this installation file into ~/ directory before run it"
@@ -361,7 +361,7 @@ else
     sudo pacman -S zsh
     zsh --version
     chsh -s $(which zsh)
-  else
+  elif [[ $CHOICE = 3 ]]; then
     # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -390,6 +390,9 @@ else
   you-should-use" >>~/.zshrc
     nano ~/.zshrc
 
+  else
+    echo "Nothing to do"
+
   fi
 
   # After install above essential packages. You have to install Lavanda-Sea and Lavanda-Sea-Light theme
@@ -398,5 +401,8 @@ else
   # Install Gnome Extensions
   # Change gnome extension properties: burn my windows, dash to dock, ddterm, logo menu, wiggle
   # Change icons and themes
+
+else
+  echo "Nothing to do"
 
 fi
