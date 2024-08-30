@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "Enter your disk: "
 read DISK
 echo $"\nBecause root, home, data reside in LVM so the remaining space after partitioning for root and home partition is data partition\n"
