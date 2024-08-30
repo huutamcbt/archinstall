@@ -45,41 +45,54 @@ function print_swap() {
 
 print_lsblk
 
-while [[ ! $EFI =~ $DRIVE ]]; do
-  echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
-  read EFI
-  #  echo "This partition is not in the selected drive"
-done
+echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+read EFI
+EFI=${DRIVE}p${EFI}
+echo "Please enter boot partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+read BOOT
+BOOT=${DRIVE}p${BOOT}
+echo "Please enter swap partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+read SWAP
+SWAP=${DRIVE}p${SWAP}
+ROOT=/dev/vg0/lv_root
+HOME=/dev/vg0/lv_home
+DATA=/dev/vg0/lv_data
 
-while [[ ! $BOOT =~ $DRIVE ]]; do
-  echo "Please enter boot partition: (example /dev/sda1 or /dev/nvme0n1p1)"
-  read BOOT
-  #  echo "This partition is not in the selected drive"
-done
-
-while [[ ! $SWAP =~ $DRIVE ]]; do
-  echo "Please enter swap partition: (example /dev/sda1 or /dev/nvme0n1p1)"
-  read SWAP
-  # echo "This partition is not in the selected drive"
-done
-
-while [[ ! $ROOT =~ 'lv_root' ]]; do
-  echo "Please enter root partition: (example /dev/sda1 or /dev/nvme0n1p1)"
-  read ROOT
-  #echo "This partition is not in the selected drive"
-done
-
-while [[ ! $HOME =~ 'lv_home' ]]; do
-  echo "Please enter home partition: (example /dev/sda1 or /dev/nvme0n1p1)"
-  read HOME
-  #echo "This partition is not in the selected drive"
-done
-
-while [[ ! $DATA =~ 'lv_data' ]]; do
-  echo "Please enter data partition: (example /dev/sda1 or /dev/nvme0n1p1)"
-  read DATA
-  #echo "This partition is not in the selected drive"
-done
+# while [[ ! $EFI =~ $DRIVE ]]; do
+#   echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+#   read EFI
+#   #  echo "This partition is not in the selected drive"
+# done
+#
+# while [[ ! $BOOT =~ $DRIVE ]]; do
+#   echo "Please enter boot partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+#   read BOOT
+#   #  echo "This partition is not in the selected drive"
+# done
+#
+# while [[ ! $SWAP =~ $DRIVE ]]; do
+#   echo "Please enter swap partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+#   read SWAP
+#   # echo "This partition is not in the selected drive"
+# done
+#
+# while [[ ! $ROOT =~ 'lv_root' ]]; do
+#   echo "Please enter root partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+#   read ROOT
+#   #echo "This partition is not in the selected drive"
+# done
+#
+# while [[ ! $HOME =~ 'lv_home' ]]; do
+#   echo "Please enter home partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+#   read HOME
+#   #echo "This partition is not in the selected drive"
+# done
+#
+# while [[ ! $DATA =~ 'lv_data' ]]; do
+#   echo "Please enter data partition: (example /dev/sda1 or /dev/nvme0n1p1)"
+#   read DATA
+#   #echo "This partition is not in the selected drive"
+# done
 
 # Summary the partition table
 clear
