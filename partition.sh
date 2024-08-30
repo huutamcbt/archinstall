@@ -18,26 +18,47 @@ read HOME_SPACE
 
 fdisk -l $DISK
 
-fdisk $DISK <<EOF
-g
-n
+# fdisk $DISK <<EOF
+# g
+# n
+#
+#
+# "+${EFI_SPACE}"
+# n
+#
+#
+# "+${BOOT_SPACE}"
+# n
+#
+#
+# "+${SWAP_SPACE}"
+# n
+#
+#
+# "+${GENERAL_SPACE}"
+# w
+# EOF
 
-
-"+${EFI_SPACE}"
-n
-
-
-"+${BOOT_SPACE}"
-n
-
-
-"+${SWAP_SPACE}"
-n
-
-
-"+${GENERAL_SPACE}"
-w
-EOF
+(
+  echo g
+  echo n
+  echo
+  echo
+  echo "+${EFI_SPACE}"
+  echo n
+  echo
+  echo
+  echo "+${BOOT_SPACE}"
+  echo n
+  echo
+  echo
+  echo "+${SWAP_SPACE}"
+  echo n
+  echo
+  echo
+  echo "+${GENERAL_SPACE}"
+  echo w
+) | fdisk $DISK
 
 # fdisk $DISK <<EOF
 #
