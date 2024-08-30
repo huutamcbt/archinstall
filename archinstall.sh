@@ -3,8 +3,7 @@
 clear
 
 echo "(1) Live Arch Linux Kernel"
-echo "(2) Chroot mode"
-echo "(3) GUI Mode (After install basic arch linux"
+echo "(2) GUI Mode (After install basic arch linux"
 
 STEP=1
 
@@ -16,8 +15,6 @@ if [[ $STEP = 1 ]]; then
   source ./chroot_mode.sh
 
 elif [[ $STEP = 2 ]]; then
-
-elif [[ $STEP = 3 ]]; then
   source ./user_mode.sh
 
   # After install above essential packages. You have to install Lavanda-Sea and Lavanda-Sea-Light theme
