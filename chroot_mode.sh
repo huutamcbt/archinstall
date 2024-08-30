@@ -43,7 +43,7 @@ arch-chroot /mnt mkinitcpio -p linux
 
 echo "Edit grub file (/etc/default/grub), set some kernel parameter such as cryptdevice, root"
 
-arch-chroot /mnt blkid | grep -e "crypto_LUKS" -e "/vg0-lv_root" >>/etc/default/grub
+blkid | grep -e "crypto_LUKS" -e "/vg0-lv_root" >>/mnt/etc/default/grub
 
 echo "Edit /etc/default/grub"
 echo "Press Enter to continue..."
