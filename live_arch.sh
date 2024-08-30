@@ -40,7 +40,7 @@ function print_data() {
 }
 
 function print_swap() {
-  echo "SWAP AREA: $SWAP"
+  echo "SWAP AREA     : $SWAP"
 }
 
 print_lsblk
