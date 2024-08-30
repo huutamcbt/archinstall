@@ -10,7 +10,7 @@ read BOOT_SPACE
 echo "How much storage space do you need for your SWAP partition?"
 read SWAP_SPACE
 echo "How much storage space do you need for your General partition?"
-echo GENERAL_SPACE
+read GENERAL_SPACE
 echo "How much storage space do you need for your ROOT partition?"
 read ROOT_SPACE
 echo "How much storage space do you need for your HOME partition?"
