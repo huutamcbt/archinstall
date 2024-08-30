@@ -2,10 +2,10 @@
 arch-chroot /mnt echo "Enter root password: "
 arch-chroot /mnt passwd
 
-arch-chroot /mnt echo "Add your user: "
-arch-chroot /mnt read USER
+echo "Add your user: "
+read USER
 arch-chroot /mnt useradd -m -g users -G wheel $USER
-arch-chroot /mnt echo "Enter your user password"
+echo "Enter your user password"
 arch-chroot /mnt passwd $USER
 
 # Set timezone
@@ -27,13 +27,13 @@ arch-chroot /mnt echo arch >>/etc/hostname
 arch-chroot /mnt pacman -Syu --needed --noconfirm mesa intel-media-driver dkms nvidia-dkms xorg xorg-apps xorg-server xorg-xinit nvidia-utils nvidia-settings
 
 # Edit mkinitcpio.conf file
-arch-chroot /mnt echo "Edit the mkinitcpio.conf file, add some hooks into file such as encrypt, lvm2,..."
-arch-chroot /mnt echo "Press Enter to continue..."
-arch-chroot /mnt read
+echo "Edit the mkinitcpio.conf file, add some hooks into file such as encrypt, lvm2,..."
+echo "Press Enter to continue..."
+read
 
 arch-chroot /mnt nano /etc/mkinitcpio.conf
 
-arch-chroot /mnt echo "Compile mkinitcpio.conf file for linux and linux-lts kernel"
+echo "Compile mkinitcpio.conf file for linux and linux-lts kernel"
 
 arch-chroot /mnt mkinitcpio -p linux
 
@@ -41,13 +41,13 @@ arch-chroot /mnt mkinitcpio -p linux
 
 # Install GRUB and config it
 
-arch-chroot /mnt echo "Edit grub file (/etc/default/grub), set some kernel parameter such as cryptdevice, root"
+echo "Edit grub file (/etc/default/grub), set some kernel parameter such as cryptdevice, root"
 
 arch-chroot /mnt blkid | grep -e "crypto_LUKS" -e "/vg0-lv_root" >>/etc/default/grub
 
-arch-chroot /mnt echo "Edit /etc/default/grub"
-arch-chroot /mnt echo "Press Enter to continue..."
-arch-chroot /mnt read
+echo "Edit /etc/default/grub"
+echo "Press Enter to continue..."
+read
 
 # Edit grub file
 arch-chroot /mnt nano /etc/default/grub
@@ -63,9 +63,9 @@ arch-chroot /mnt systemctl enable sshd gdm NetworkManager bluetooth
 
 # Edit sudoer file
 
-arch-chroot /mnt echo "Edit sudoer file (wheel group)"
-arch-chroot /mnt echo "Press Enter to continue..."
-arch-chroot /mnt read
+echo "Edit sudoer file (wheel group)"
+echo "Press Enter to continue..."
+read
 
 arch-chroot /mnt nano /etc/sudoers
 
@@ -76,5 +76,5 @@ arch-chroot /mnt sudo chmod -R g+rwx /data
 
 arch-chroot /mnt echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' >>/etc/udev/rules.d/backlight.rules
 
-arch-chroot /mnt echo "Do you want reboot now? [y/n]"
-arch-chroot /mnt read REBOOT
+echo "Do you want reboot now? [y/n]"
+read REBOOT
