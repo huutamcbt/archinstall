@@ -57,6 +57,15 @@ fdisk -l $DISK
   echo
   echo
   echo "+${GENERAL_SPACE}"
+  echo t
+  echo 1
+  echo 1
+  echo t
+  echo 3
+  echo 19
+  echo t
+  echo 4
+  echo 44
   echo w
 ) | fdisk $DISK
 
