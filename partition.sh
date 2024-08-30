@@ -2,6 +2,11 @@
 
 echo "Enter your disk: "
 read DISK
+clear
+echo $'-------------------------------------------------------------'
+echo $'Your drive detail\n'
+fdisk -l $DISK
+echo $'\n-------------------------------------------------------------'
 echo $'\nBecause root, home, data reside in LVM so the remaining space after partitioning for root and home partition is data partition\n'
 echo "How much storage space do you need for your EFI partition?"
 read EFI_SPACE
@@ -90,10 +95,10 @@ read
 
 fdisk -l $DISK
 
-echo "Enter your cryptdevice: "
+echo "Enter your cryptdevice (partition number): "
 read CRYPTDEVICE
 cryptsetup luksFormat $CRYPTDEVICE
-cryptsetup open --type luks $CRYPTDEVICE lvm
+cryptsetup open --type luks ${DISK}p${CRYPTDEVICE} lvm
 
 # Create physical volume in encrypt partition
 pvcreate /dev/mapper/lvm
