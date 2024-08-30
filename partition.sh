@@ -112,10 +112,10 @@ pvcreate /dev/mapper/lvm
 vgcreate vg0 /dev/mapper/lvm
 
 # Create logical volume
-lvcreate -L $ROOT_SPACE -n lv_root
+lvcreate -L $ROOT_SPACE vg0 -n lv_root
 
-lvcreate -L $HOME_SPACE -n lv_home
+lvcreate -L $HOME_SPACE vg0 -n lv_home
 
-lvcreate -l 100%FREE -n lv_data
+lvcreate -l 100%FREE vg0 -n lv_data
 
 lsblk $DISK
