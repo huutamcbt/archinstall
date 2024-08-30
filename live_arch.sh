@@ -47,13 +47,25 @@ print_lsblk
 
 echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
 read EFI
-EFI=${DRIVE}p${EFI}
+if [[ $DRIVE =~ 'nvme' ]]; then
+  EFI=${DRIVE}p${EFI}
+else
+  EFI=${DRIVE}${EFI}
+fi
 echo "Please enter boot partition: (example /dev/sda1 or /dev/nvme0n1p1)"
 read BOOT
-BOOT=${DRIVE}p${BOOT}
+if [[ $DRIVE =~ 'nvme' ]]; then
+  BOOT=${DRIVE}p${BOOT}
+else
+  BOOT=${DRIVE}${BOOT}
+fi
 echo "Please enter swap partition: (example /dev/sda1 or /dev/nvme0n1p1)"
 read SWAP
-SWAP=${DRIVE}p${SWAP}
+if [[ $DRIVE =~ 'nvme' ]]; then
+  SWAP=${DRIVE}p${SWAP}
+else
+  SWAP=${DRIVE}${SWAP}
+fi
 ROOT=/dev/vg0/lv_root
 HOME=/dev/vg0/lv_home
 DATA=/dev/vg0/lv_data
