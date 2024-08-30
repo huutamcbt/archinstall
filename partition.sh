@@ -97,8 +97,13 @@ fdisk -l $DISK
 
 echo "Enter your cryptdevice (partition number): "
 read CRYPTDEVICE
-cryptsetup luksFormat ${DISK}p${CRYPTDEVICE}
-cryptsetup open --type luks ${DISK}p${CRYPTDEVICE} lvm
+if [[ $DISK =~ 'nvme' ]]; then
+  cryptsetup luksFormat ${DISK}p${CRYPTDEVICE}
+  cryptsetup open --type luks ${DISK}p${CRYPTDEVICE} lvm
+else
+  cryptsetup luksFormat ${DISK}${CRYPTDEVICE}
+  cryptsetup open --type luks ${DISK}${CRYPTDEVICE} lvm
+fi
 
 # Create physical volume in encrypt partition
 pvcreate /dev/mapper/lvm
