@@ -90,8 +90,10 @@ read
 
 fdisk -l $DISK
 
-cryptsetup luksFormat $GENERAL_SPACE
-cryptsetup open --type luks $GENERAL_SPACE lvm
+echo "Enter your cryptdevice: "
+read CRYPTDEVICE
+cryptsetup luksFormat $CRYPTDEVICE
+cryptsetup open --type luks $CRYPTDEVICE lvm
 
 # Create physical volume in encrypt partition
 pvcreate /dev/mapper/lvm
