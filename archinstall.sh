@@ -275,26 +275,32 @@ elif [[ $STEP = 3 ]]; then
 
   if [[ $CHOICE = 1 ]]; then
     # Install yay
-    sudo pacman -S --needed git base-devel
+    sudo pacman -S --noconfirm --needed git base-devel
     git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
 
     # Install fonts
-    sudo pacman -S --needed nerd-fonts
-    sudo pacman -S --needed noto-fonts ttf-roboto adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts
-    sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji
-    sudo pacman -S --needed ttf-ubuntu-font-family
+    sudo pacman -S --noconfirm --needed nerd-fonts
+    sudo pacman -S --needed --noconfirm noto-fonts ttf-roboto adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts
+    sudo pacman -S --needed --noconfirm noto-fonts-cjk noto-fonts-emoji
+    sudo pacman -S --needed --noconfirm ttf-ubuntu-font-family
     yay -S ttf-google-fonts-git
-    sudo pacman -S --needed gnu-free-fonts gsfonts tex-gyre-fonts
-    sudo pacman -S --needed ttf-dejavu
-    sudo pacman -S --needed ttf-droid ttf-opensans
-    sudo pacman -S --needed ttf-liberation ttf-croscore
+    sudo pacman -S --needed --noconfirm gnu-free-fonts gsfonts tex-gyre-fonts
+    sudo pacman -S --needed --noconfirm ttf-dejavu
+    sudo pacman -S --needed --noconfirm ttf-droid ttf-opensans
+    sudo pacman -S --needed --noconfirm ttf-liberation ttf-croscore
     # libreoffice fonts
-    sudo pacman -S --needed ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
+    sudo pacman -S --needed --noconfirm ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
     yay -S ttf-gentium-basic
     yay -S ttf-google-fonts-git
-    sudo pacman -S --needed xorg-fonts-encodings xorg-fonts-misc xorg-fonts-type1 xorg-font-util
+    sudo pacman -S --needed --noconfirm xorg-fonts-encodings xorg-fonts-misc xorg-fonts-type1 xorg-font-util
+
+    # Install antivirus
+    sudo pacman -S --noconfirm clamav
+
+    # Install image editor
+    sudo pacman -S --noconfirm gimp
 
     yay -S apple-fonts
 
@@ -315,20 +321,20 @@ elif [[ $STEP = 3 ]]; then
     git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
 
     # Install obs-studio
-    sudo pacman -S obs-studio
+    sudo pacman -S --needed --noconfirm obs-studio
 
     # Install flatpak
-    sudo pacman -S flatpak
+    sudo pacman -S --needed --noconfirm flatpak
 
     flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
     # Install docker
-    sudo pacman -S docker docker-compose docker-buildx
+    sudo pacman -S --needed --noconfirm docker docker-compose docker-buildx
     sudo systemctl enable docker.service
     sudo usermod -aG docker $(whoami)
 
     # Install neovim
-    sudo pacman -S --needed base-devel cmake unzip ninja curl
+    sudo pacman -S --needed --noconfirm base-devel cmake unzip ninja curl
     cd /tmp
     git clone https://github.com/neovim/neovim
     cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
@@ -346,7 +352,7 @@ elif [[ $STEP = 3 ]]; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
     # Install VirtualBox
-    sudo pacman -S virtualbox virtualbox-guest-iso
+    sudo pacman -S --needed --noconfirm virtualbox virtualbox-guest-iso
 
     yay -S virtualbox-ext-oracle
 
@@ -358,7 +364,7 @@ elif [[ $STEP = 3 ]]; then
   # Install GNOME EXTENSIONS
   elif [[ $CHOICE = 2 ]]; then
     # Install zsh
-    sudo pacman -S zsh
+    sudo pacman -S --needed --noconfirm zsh
     zsh --version
     chsh -s $(which zsh)
   elif [[ $CHOICE = 3 ]]; then
@@ -367,7 +373,7 @@ elif [[ $STEP = 3 ]]; then
 
     # Install zsh plugins
     # Install fzf plugin
-    sudo pacman -S --needed fzf
+    sudo pacman -S --needed --noconfirm fzf
 
     # Install zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
