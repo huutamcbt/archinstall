@@ -62,6 +62,10 @@ if [[ $CHOICE = 1 ]]; then
   # Install flat-remix theme
   yay -S --needed --noconfirm flat-remix
 
+  sudo pacman -S --needed --noconfirm papirus-icon-theme
+  yay -S --needed --noconfirm fluent-icon-theme-git
+  yay -S --needed --noconfirm kora-icon-theme
+
   # Install ulauncher
   git clone https://aur.archlinux.org/ulauncher.git && cd ulauncher && makepkg -is
 
