@@ -31,6 +31,8 @@ echo "Edit the mkinitcpio.conf file, add some hooks into file such as encrypt, l
 echo "Press Enter to continue..."
 read
 
+echo "nvidia nvidia_modeset nvidia_uvm nvidia_drm" >>/mnt/etc/mkinitcpio.conf
+
 arch-chroot /mnt nano /etc/mkinitcpio.conf
 
 echo "Compile mkinitcpio.conf file for linux and linux-lts kernel"
@@ -44,6 +46,7 @@ arch-chroot /mnt mkinitcpio -p linux
 echo "Edit grub file (/etc/default/grub), set some kernel parameter such as cryptdevice, root"
 
 blkid | grep -e "crypto_LUKS" -e "/vg0-lv_root" >>/mnt/etc/default/grub
+echo "nvidia.modeset=1 NVreg_PreserveVideoMemoryAllocations=1" >>/mnt/etc/default/grub
 
 echo "Edit /etc/default/grub"
 echo "Press Enter to continue..."
