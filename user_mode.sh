@@ -112,7 +112,7 @@ if [[ $CHOICE = 1 ]]; then
 
   # Install arduino ide
   cp -r ./Apps_Icons/ ~/Documents/
-  cp -r ./Program_Files/ ~/Documents/
+  cp ~/Documents/Program_Files/
 
   curl -L https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Linux_64bit.AppImage -o ~/Documents/Program_Files/arduino-ide_2.3.2_Linux_64bit.AppImage
   cp ./arduino_ide_v2.desktop ~/.local/share/applications/
