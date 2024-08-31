@@ -110,6 +110,27 @@ if [[ $CHOICE = 1 ]]; then
   # Install ibus-bamboo
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/BambooEngine/ibus-bamboo/master/archlinux/install.sh)"
 
+  # Install arduino ide
+  cp -r ./Apps_Icons/ ~/Documents/
+  cp -r ./Program_Files/ ~/Documents/
+
+  curl -L https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Linux_64bit.AppImage -o ~/Documents/Program_Files/arduino-ide_2.3.2_Linux_64bit.AppImage
+  cp ./arduino_ide_v2.desktop ~/.local/share/applications/
+
+  # Install Lavanda theme
+  # Install Colloid icon
+  git clone https://github.com/vinceliuice/Colloid-icon-theme.git
+  cd Colloid-icon-theme
+  ./install.sh
+
+  git clone https://github.com/vinceliuice/Lavanda-gtk-theme.git
+  sudo pacman -S --needed --noconfirm gtk-engine-murrine sassc
+
+  cd wallpaper
+  sudo ./install-gnome-backgrounds.sh
+  cd ..
+  ./install.sh
+
 # Install GNOME EXTENSIONS
 elif [[ $CHOICE = 2 ]]; then
   # Install zsh

@@ -1,0 +1,29 @@
+
+[Desktop Entry]
+
+# The type as listed above
+Type=Application
+
+# The version of the desktop entry specification to which this file complies
+Version=1.0
+
+# The name of the application
+Name=Arduino IDE 2
+
+# A comment which can/will be used as a tooltip
+Comment=This is Arduino IDE version 2
+
+# The path to the folder in which the executable is run
+Path=/home/tam/Documents/Program_Files/
+
+# The executable of the application, possibly with arguments.
+Exec=./arduino-ide_2.3.2_Linux_64bit.AppImage
+
+# The name of the icon that will be used to display this entry
+Icon=/home/tam/Documents/Apps_Icons/arduino_ide.png
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=false
+
+# Describes the categories in which this entry should be shown
+Categories=Application
