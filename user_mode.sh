@@ -1,3 +1,4 @@
+source ./utilities.sh
 clear
 
 echo "You must copy this installation file into ~/ directory before run it"
@@ -117,6 +118,8 @@ if [[ $CHOICE = 1 ]]; then
   curl -L https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Linux_64bit.AppImage -o ~/Documents/Program_Files/arduino-ide_2.3.2_Linux_64bit.AppImage
   cp ./arduino_ide_v2.desktop ~/.local/share/applications/
 
+  sudo usermod -aG uucp $(whoami)
+
   # Install Lavanda theme
   # Install Colloid icon
   git clone https://github.com/vinceliuice/Colloid-icon-theme.git
@@ -137,11 +140,10 @@ elif [[ $CHOICE = 2 ]]; then
   sudo pacman -S --needed --noconfirm zsh
   zsh --version
   chsh -s $(which zsh)
-  echo "Do you want to reboot now? [y/n]"
-  read REBOOT
-  if [[ $REBOOT = 'y' ]]; then
-    reboot
-  fi
+
+  # Reboot
+  custom_reboot
+
 elif [[ $CHOICE = 3 ]]; then
   # Install oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -170,6 +172,9 @@ elif [[ $CHOICE = 3 ]]; then
   zsh-syntax-highlighting
   you-should-use" >>~/.zshrc
   nano ~/.zshrc
+
+  # Reboot
+  custom_reboot
 
 else
   echo "Nothing to do"
