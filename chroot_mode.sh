@@ -1,3 +1,5 @@
+source ./utilities.sh
+
 # Setup root password
 arch-chroot /mnt echo "Enter root password: "
 arch-chroot /mnt passwd
@@ -64,6 +66,8 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 arch-chroot /mnt systemctl enable sshd gdm NetworkManager bluetooth
 
+arch-chroot /mnt systemctl enable nvidia-hibernate.service nvidia-persistenced.service nvidia-powerd.service nvidia-resume.service nvidia-suspend.service
+
 # Edit sudoer file
 
 echo "Edit sudoer file (wheel group)"
@@ -75,9 +79,12 @@ arch-chroot /mnt nano /etc/sudoers
 arch-chroot /mnt sudo chgrp -R wheel /data
 arch-chroot /mnt sudo chmod -R g+rwx /data
 
+echo "vm.swappiness = 95" >>/mnt/etc/sysctl.d/99-swappiness.conf
+
 #echo "file:///data Data" >>/home/tam/.config/gtk-3.0/bookmarks
 
 arch-chroot /mnt echo 'ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp wheel $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"' >>/etc/udev/rules.d/backlight.rules
 
-echo "Do you want reboot now? [y/n]"
-read REBOOT
+custom_umount
+
+custom_reboot

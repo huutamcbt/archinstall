@@ -7,3 +7,11 @@ function custom_reboot() {
     reboot
   fi
 }
+
+function custom_umount() {
+  echo "Do you want to umount now? [y/n]"
+  read UMOUNT
+  if [[ $UMOUNT = 'y' ]]; then
+    umount -a
+  fi
+}
