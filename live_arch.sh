@@ -43,6 +43,7 @@ function print_swap() {
   echo "SWAP AREA     : $SWAP"
 }
 
+print_drive
 print_lsblk
 
 echo "Please enter EFI partition: (example /dev/sda1 or /dev/nvme0n1p1)"
