@@ -170,7 +170,7 @@ genfstab -U /mnt >>/mnt/etc/fstab
 echo "The detail fstab file"
 cat "/mnt/etc/fstab"
 
-cp -r ../archinstall/ /mnt
+# cp -r ../archinstall/ /mnt
 # Change root into /mnt directory
 echo "Run arch-chroot"
 echo "Press Enter to continue ..."

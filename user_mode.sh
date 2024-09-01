@@ -134,7 +134,37 @@ if [[ $CHOICE = 1 ]]; then
   cd ..
   ./install.sh
 
-# Install GNOME EXTENSIONS
+  # Install GNOME EXTENSIONS
+
+  # # Install blur my shell
+  # git clone https://github.com/aunetx/blur-my-shell
+  # cd blur-my-shell
+  # make install
+  # gnome-extensions enable blur-my-shell@aunetx
+  #
+  # # Install Burn my windows
+  # git clone https://github.com/Schneegans/Burn-My-Windows.git
+  # cd Burn-My-Windows
+  # make install
+  # gnome-extensions enable burn-my-windows@schneegans.github.com
+  # # Install Caffeine
+  # git clone https://github.com/eonpatapon/gnome-shell-extension-caffeine.git
+  # cd gnome-shell-extension-caffeine
+  # make build
+  # make install
+  # gnome-extensions enable caffeine@patapon.info
+  # # Install Clipboard Indicator
+  # git clone https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git ~/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com
+  # gnome-extensions enable clipboard-indicator@tudmotu.com
+  # # Install color picker
+  # git clone --recurse-submodules https://github.com/tuberry/color-picker.git && cd color-picker
+  # meson setup build && meson install -C build
+  # gnome-extensions enable color-picker@tuberry
+  # # meson setup build -Dtarget=system && meson install -C build # system-wide, default --prefix=/usr/local
+  # # Install compact top bar
+  # git clone https://aur.archlinux.org/gnome-shell-extension-compact-top-bar && cd gnome-shell-extension-compact-top-bar && makepkg -sfri
+  # gnome-extensions enable gnome-compact-top-bar@metehan-arslan.github.io
+
 elif [[ $CHOICE = 2 ]]; then
   # Install zsh
   sudo pacman -S --needed --noconfirm zsh
