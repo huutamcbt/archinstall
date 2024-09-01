@@ -165,6 +165,9 @@ if [[ $CHOICE = 1 ]]; then
   # git clone https://aur.archlinux.org/gnome-shell-extension-compact-top-bar && cd gnome-shell-extension-compact-top-bar && makepkg -sfri
   # gnome-extensions enable gnome-compact-top-bar@metehan-arslan.github.io
 
+  # Install firmware
+  yay -S --needed --noconfirm ast-firmware aic94xx-firmware wd719x-firmware upd72020x-fw
+
 elif [[ $CHOICE = 2 ]]; then
   # Install zsh
   sudo pacman -S --needed --noconfirm zsh
