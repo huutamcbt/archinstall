@@ -167,6 +167,7 @@ if [[ $CHOICE = 1 ]]; then
 
   # Install firmware
   yay -S --needed --noconfirm ast-firmware aic94xx-firmware wd719x-firmware upd72020x-fw
+  sudo mkinitcpio -P
 
 elif [[ $CHOICE = 2 ]]; then
   # Install zsh
