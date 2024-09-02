@@ -116,6 +116,7 @@ if [[ $CHOICE = 1 ]]; then
   cp ~/Documents/Program_Files/
 
   curl -L https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Linux_64bit.AppImage -o ~/Documents/Program_Files/arduino-ide_2.3.2_Linux_64bit.AppImage
+  sudo chmod +x arduino-ide_2.3.2_Linux_64bit.AppImage
   cp ./arduino_ide_v2.desktop ~/.local/share/applications/
 
   sudo usermod -aG uucp $(whoami)
@@ -168,6 +169,8 @@ if [[ $CHOICE = 1 ]]; then
   # Install firmware
   yay -S --needed --noconfirm ast-firmware aic94xx-firmware wd719x-firmware upd72020x-fw
   sudo mkinitcpio -P
+
+  custom_reboot
 
 elif [[ $CHOICE = 2 ]]; then
   # Install zsh
