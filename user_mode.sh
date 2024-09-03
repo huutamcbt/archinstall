@@ -130,13 +130,13 @@ if [[ $CHOICE = 1 ]]; then
   cd Colloid-icon-theme
   ./install.sh
 
-  git clone https://github.com/vinceliuice/Lavanda-gtk-theme.git
+  # git clone https://github.com/vinceliuice/Lavanda-gtk-theme.git
+  cd Lavanda-gtk-theme
+  ./install.sh
   sudo pacman -S --needed --noconfirm gtk-engine-murrine sassc
 
   cd wallpaper
   sudo ./install-gnome-backgrounds.sh
-  cd ..
-  ./install.sh
 
   # Install GNOME EXTENSIONS
 
