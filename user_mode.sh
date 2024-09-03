@@ -48,6 +48,9 @@ if [[ $CHOICE = 1 ]]; then
   # Install image editor
   sudo pacman -S --needed --noconfirm gimp
 
+  # Install media player
+  sudo pacman -S --needed --noconfirm vlc kodi-gles
+
   yay -S --needed --noconfirm apple-fonts
 
   # Install web browser
