@@ -138,6 +138,8 @@ if [[ $CHOICE = 1 ]]; then
   cd wallpaper
   sudo ./install-gnome-backgrounds.sh
 
+  sudo pacman -S --needed --noconfirm python-pyserial
+
   # Install GNOME EXTENSIONS
 
   # # Install blur my shell
