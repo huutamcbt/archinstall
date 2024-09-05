@@ -208,11 +208,24 @@ elif [[ $CHOICE = 3 ]]; then
   echo "Press Enter to continue..."
   read
 
-  echo "command-not-found
+  echo "
+  git
+  sudo
+  web-search
+  copypath
+  copyfile
+  copybuffer
+  dirhistory
+  history
+  jsontools
+  command-not-found
   fzf
   zsh-autosuggestions
   zsh-syntax-highlighting
-  you-should-use" >>~/.zshrc
+  you-should-use
+
+  eval $(thefuck --alias)
+" >>~/.zshrc
   nano ~/.zshrc
 
   # Reboot
