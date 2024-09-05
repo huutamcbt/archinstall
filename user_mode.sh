@@ -105,7 +105,7 @@ if [[ $CHOICE = 1 ]]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
   # Install VirtualBox
-  sudo pacman -S --needed --noconfirm virtualbox virtualbox-guest-iso
+  sudo pacman -S --needed --noconfirm virtualbox virtualbox-guest-iso virtualbox-guest-utils
 
   yay -S --needed --noconfirm virtualbox-ext-oracle
 
