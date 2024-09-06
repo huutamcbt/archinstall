@@ -23,6 +23,8 @@ elif [[ $STEP = 2 ]]; then
   # Install Gnome Extensions
   # Change gnome extension properties: burn my windows, dash to dock, ddterm, logo menu, wiggle
   # Change icons and themes
+  # Add app image extension into ulauncher
+  # https://github.com/atorresg/appimagelauncher
 
 else
   echo "Nothing to do"
