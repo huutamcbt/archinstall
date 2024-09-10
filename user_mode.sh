@@ -140,6 +140,9 @@ if [[ $CHOICE = 1 ]]; then
 
   sudo pacman -S --needed --noconfirm python-pyserial
 
+  # Install WPS Office
+  yay -S wps-office ttf-wps-fonts libtiff5
+
   # Install GNOME EXTENSIONS
 
   # # Install blur my shell
